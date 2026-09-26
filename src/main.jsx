@@ -140,9 +140,19 @@ useEffect(() => {
 }, [isPaused, maxReviewIndex]);
 
   const scrollTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    setMobileOpen(false);
-  };
+  setMobileOpen(false);
+
+  setTimeout(() => {
+    const section = document.getElementById(id);
+
+    if (section) {
+      section.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  }, 150);
+};
 
   return (
     <div className="site-shell">
